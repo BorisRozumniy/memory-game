@@ -1,10 +1,142 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>git</title>
-  </head>
-  <body>
-    <h1>first git expirience</h1>
-  </body>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Учет финансов</title>
+	<link rel="stylesheet" href="style/style.css">
+	<link rel="stylesheet" href="style/test.css">
+</head>
+<body>
+	<nav>
+		<!-- <button data-popup="edit-history">edit-history</button> -->
+
+		<button class="button" data-popup="add-category">Добавить категорию</button>
+		<button id="hidden" class="button">Категории</button>
+		<button id="historyBtn" class="button">История</button>
+		<div id="show-balance" class="box">
+			<span>Текущий баланс:</span>
+			<b>0</b>
+		</div>
+	</nav>
+	<h1>Учет финансов</h1>
+
+	<div class="wrapper">
+
+		<div class="box">
+			<h2>Добавить доход/расход</h2>
+			<div class="wrap-row">
+				<div class="wrap-column">
+					<h3><label for="money">Сумма</label></h3>
+					<input type="number" id="money">
+				</div>
+
+				<div class="wrap-column">
+					<h3><label for="selected">Категории</label></h3>
+					<select class="select" id="selected">
+						<option value="Без категории">Без категории</option>
+					</select>
+				</div>
+
+
+			</div>
+			<button class="button" id="incoming-balance" data-save="save">Сохранить</button>
+		</div>
+	</div>
+
+	<div class="bgpopup">
+		<div class="hidden popupWindow" data-popup="add-category">
+			<h2>Добавить категорию</h2>
+			<!-- <a class="close">&times;</a> -->
+			<button class="close">&times;</button>
+			<div class="wrap-column">
+
+				<div class="wrap-row">
+
+					<div class="wrap-column">
+						<h3><label for="categories-name">Название категории</label></h3>
+						<input type="text" id="categories-name">
+					</div>
+
+					<div class="wrap-column" id="only-one">
+						<h3>Тип категории</h3>
+						<label for="income">
+							<input type="radio" name="onlyone" id="income" >
+							Доход
+						</label>
+						<label for="consumption">
+							<input type="radio" name="onlyone" id="consumption">
+							Расход
+						</label>
+					</div>
+				</div>
+
+				<button class="button" id="add_category" data-save="save">Сохранить</button>
+
+			</div>
+		</div>
+
+		<div class="hidden popupWindow" data-popup="edit-category">
+			<button class="close">&times;</button>
+			<h2>Редактировать категории</h2>
+			<div class="wrap-column">
+				<div class="wrap-row">
+					<div class="wrap-column">
+						<h3><label for="edit-category-name">Название категории</label></h3>
+						<input type="text" id="edit-category-name">
+					</div>
+					<div class="wrap-column" id="edit-only-one">
+						<h3>Тип категории</h3>
+						<label for="edit-income">
+							<input type="radio" name="edit-onlyone" id="edit-income" >
+							Доход
+						</label>
+						<label for="edit-consumption">
+							<input type="radio" name="edit-onlyone" id="edit-consumption">
+							Расход
+						</label>
+					</div>
+				</div>
+				<button class="button" id="edit_category" data-save="save">Сохранить</button>
+			</div>
+		</div>
+
+		<div class="hidden popupWindow" data-popup="edit-history">
+			<button class="close">×</button>
+			<h2>Редактировать финансовую операцию</h2>
+			<div class="wrap-column">
+				<div class="wrap-row">
+					<div class="wrap-column">
+						<h3><label for="edit-money">Сумма</label></h3>
+						<input type="number" id="edit-money">
+					</div>
+					<div class="wrap-column">
+						<h3><label for="select-edit-history">Категории</label></h3>
+						<select class="select" id="select-edit-history">
+							<option value="Без категории">Без категории</option>
+						</select>
+					</div>
+				</div>
+				<button class="button" id="edit_history" data-save="edit-history">Сохранить</button>
+			</div>
+		</div>
+	</div>
+
+	<div id="wrapcategory" class="box category-block">
+		<h2>Созданные категории</h2>
+		<ul id="existing-categories">
+			<li class="consumption">
+				<span>Без категории</span>
+			</li>
+		</ul>
+	</div>
+
+	<div id="wraphistory" class="box history-block">
+		<h2>История</h2>
+		<ul id="existing-histories"></ul>
+	</div>
+
+
+	<script src="./js/script.js"></script>
+	<script src="./js/test.js"></script>
+</body>
 </html>

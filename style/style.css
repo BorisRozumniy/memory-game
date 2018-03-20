@@ -1,0 +1,252 @@
+body {
+  font-family: Arial, sans-serif;
+  background: url(../img/select.jpg) no-repeat;
+  background-size: cover;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1, h2, h3 {
+  text-align: center;
+  font-family: Tahoma, Arial, sans-serif;
+  color: #06f85F;
+  text-shadow: 0 0 2px black;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #06D85F;
+  border-radius: 5px;
+}
+
+.wrapper {
+
+    margin: 20px;
+    padding: 5px;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+.wrap-row {
+  display: flex;
+  justify-content: space-around;
+  /* border: 1px solid red; */
+}
+
+.wrap-column {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+.box {
+  background: rgba(255,255,255,0.7);
+  padding: 15px;
+  border: 2px solid #fff;
+  border-radius: 20px/50px;
+  background-clip: padding-box;
+}
+
+.button {
+  background-color: transparent;
+
+  font-size: 1em;
+  padding: 10px;
+  color: #06D85F;
+  text-shadow: 0 0 2px black;
+  border: 2px solid #06D85F;
+  border-radius: 20px/50px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+.button:hover {
+  background: #06D85F;
+  color: #fff;
+}
+
+
+.bgpopup {
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.5);
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: flex;
+	justify-content: center;
+	visibility: hidden;
+	z-index: 300;
+}
+
+.bgpopup .popupWindow {
+	padding: 40px;
+	background-color: #c5c5c5;
+	border-radius:5px;
+	box-shadow: 0px 0px 10px #000;
+	position: absolute;
+	top: 20%;
+}
+
+.close {
+	font-size: 10px;
+	font-weight: bold;
+	position: absolute;
+	top: 3px;
+	right: 3px;
+	background: linear-gradient(#fbb, red);
+	border-style: none;
+	border-radius: 4px;
+}
+
+.close:hover {
+	text-decoration: none;
+	cursor: pointer;
+	box-shadow: 0 0 2px 0;
+}
+.close:active {
+	background: linear-gradient(red,#fbb);
+}
+
+.hidden {
+	visibility: hidden;
+}
+
+.visible {
+	visibility: visible;
+}
+
+#only-one {
+  align-items: flex-start;
+}
+
+select {
+  padding: 20px;
+  border-radius: 5px;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+  color: #1e4b33;
+}
+
+ul li {
+  border-radius: 3px;
+  margin-top: 2px;
+  padding: 19px;
+  padding-right: 40px;
+  position: relative;
+  box-shadow: 0px 0px 4px 0px red inset;
+  display: flex;
+  justify-content: flex-start;
+}
+
+ul li span {
+  margin-right: 5px;
+}
+ul button {
+  position: absolute;
+  border-style: none;
+  border-radius: 50%;
+  right: 5px;
+  width: 24px;
+  height: 24px;
+}
+
+  .btn-edit {
+    bottom: 3px;
+    background-image: url(../img/free_icons.gif);
+    background-position: -231px -119px;
+  }
+
+  .btn-remove {
+    top: 3px;
+    background-image: url(../img/free_icons.gif);
+    background-position: -72px -86px;
+  }
+
+  .btn-remove:hover {background-position: -72px -7px; box-shadow: 0 0 2px 0 black }
+  .btn-edit:hover {background-position: -230px -39px; box-shadow: 0 0 2px 0 black }
+
+.income {
+  background-color: #5be393;
+}
+.consumption {
+  background-color: #ffb588;
+}
+
+
+.category-block {
+  transition: 0.7s;
+  position: absolute;
+  left: -365px;
+  top: 49px;
+
+  height: 400px;
+  overflow: auto;
+}
+
+.toggleleft {
+  left: 12px;
+}
+
+.history-block {
+  transition: 0.7s;
+  position: absolute;
+  right: 3px;
+  top: -434px;
+  min-width: 300px;
+
+  height: 400px;
+  overflow: auto;
+}
+
+.toggleright {
+  top: 49px;
+}
+
+#existing-histories li b {
+  position: absolute;
+  right: 60px;
+  color: #473a4e;
+}
+
+
+::-webkit-scrollbar-button {
+  background-image:url(../img/select.jpg);
+  background-repeat:no-repeat;
+  width:3px;
+  height:0px
+}
+
+::-webkit-scrollbar-track {
+  background-color:#32312e;
+  box-shadow:0px 0px 3px #000 inset;
+}
+
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  background-color:#ffcb17;
+  box-shadow:0px 1px 1px #fff inset;
+  background-image:url('https://yraaa.ru/_pu/24/59610063.png');
+  background-position:center;
+  background-repeat:no-repeat;
+}
+
+::-webkit-resizer{
+  background-image:url('');
+  background-repeat:no-repeat;
+  width:7px;
+  height:0px
+}
+
+::-webkit-scrollbar{
+  width: 11px;
+}
