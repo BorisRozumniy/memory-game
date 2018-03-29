@@ -13,16 +13,21 @@ const images = [
   "https://kde.link/test/9.png"
 ];
 
-let copyImg = images.slice();
-images.forEach(e => copyImg.push(e));
-copyImg.sort( () => randomInteger(0, copyImg.length) );
 
 
 let lastClick = '';
 let previousTarget = [];
 let point = 0;
+let sumCells;
 gameField = () => {
+  if (document.querySelector('.gameTable')) {
+    document.querySelector('.gameTable').remove();
+  }
   let {width, height} = JSON.parse(fromExternalScript);
+  sumCells = width * height;
+  let copyImg = images.slice(0, sumCells / 2);
+  copyImg.forEach(e => copyImg.push(e));
+  copyImg.sort( () => randomInteger(0, copyImg.length) );
   let table = document.createElement('table');
     for (let i = 0; width > i; i++) {
       let row = table.insertRow(0);
@@ -32,40 +37,25 @@ gameField = () => {
         row.insertCell(j).appendChild(cell);
       }
     };
-    // insertImg = () => {
-      let cells = table.querySelectorAll('.cell');
-      for (let i = 0; cells.length > i; i++) {
-        // let rand = randomInteger(0, width * height -1);
-        // console.log(rand)
-        let img = document.createElement('img');
-        img.classList.add('hidden');
-        img.src = copyImg[i];
-        cells[i].appendChild(img)
-        // if (cells[rand].children.length == 0)
-        //   cells[rand].appendChild(img)
-
-          // for (let j = 0; cells.length > j; j++) {
-            // if (cells[j].children.length == 0)
-            // console.log(img)
-          // }
-      };
-    // };
-    // console.dir(table.querySelectorAll('.cell')[15])
+    let cells = table.querySelectorAll('.cell');
+    for (let i = 0; cells.length > i; i++) {
+      let img = document.createElement('img');
+      img.classList.add('hidden');
+      img.src = copyImg[i];
+      cells[i].appendChild(img)
+    };
     table.classList.add('gameTable');
   document.body.appendChild(table);
 
 
   table.addEventListener('click', event => {
     let target = event.target;
-    console.log(target)
     if (target.className != 'hidden') return;
-    // console.dir(target)
     previousTarget.push(target);
     target.classList.toggle('hidden');
 
     // проверяем на совпадения
     if (lastClick == target.src) {
-      // console.log("==")
       setTimeout(() => {
         target.parentElement.classList.toggle('hidden')
         previousTarget[previousTarget.length-2].parentElement.classList.toggle('hidden');
@@ -76,12 +66,10 @@ gameField = () => {
     }
     if (lastClick == '') {
       lastClick = target.src;
-      // console.log('" "');
       return;
     }
 
     if (lastClick !=target.src) {
-      // console.log("!=target.src")
       lastClick = '';
       setTimeout(() => {
         target.classList.toggle('hidden')
@@ -90,22 +78,22 @@ gameField = () => {
     }
   });
 };
-// gameField();
 
 showPoint = () => {
   let pointWiev = document.querySelector('#pointWiev');
   point++;
   pointWiev.textContent = point;
-}
-
-//не вникал
-function randomInteger(min, max) {
-  var rand = min - 0.5 + Math.random() * (max - min + 1)
-  rand = Math.round(rand);
-  return rand;
+  if (pointWiev.textContent == sumCells / 2) {
+    alert(`You win. Result: ${previousTarget.length}`)
+    gameField();
+    point = 0;
+    previousTarget = [];
+    pointWiev.textContent = point;
+  }
 };
 
-function randomInteger(min, max) {
+
+randomInteger = (min, max) => {
   var rand = min + Math.random() * (max + 1 - min);
   rand = Math.floor(rand);
   return rand;
