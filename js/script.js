@@ -1,4 +1,5 @@
 let gameTable = document.querySelector('table');
+let setings = document.querySelector('.setings');
 let fromExternalScript;
 let targets = [];
 let point = document.querySelector('#point');
@@ -68,12 +69,10 @@ gameField = () => {
     if (rest.length == 0 && curent) {
 
       // проверяем на совпадения
-      console.log(previous, curent)
       if (previous.src == curent.src) {
         let t1 = setTimeout(() => {
           curent.parentElement.classList.toggle('hidden');
           previous.parentElement.classList.toggle('hidden');
-          console.log('==', t1);
           targets = [];
         }, 1000)
         showPoint();
@@ -84,14 +83,12 @@ gameField = () => {
         let t2 = setTimeout(() => {
           curent.classList.toggle('hidden');
           previous.classList.toggle('hidden');
-          console.log('!=', t2, target)
           targets = [];
         }, 1000)
       }
 
     }
     if (rest.length > 0) {
-      console.log(rest, target.src)
       rest.forEach(e => e.classList.add('hidden'));
     }
   });
@@ -108,19 +105,19 @@ showPoint = () => {
         ${clicks.textContent} clicks`
       )
       gameTable.children[0].remove();
-      gameField();
+      document.querySelector('.setings').classList.toggle('hidden');
       point.textContent = 0;
       clicks.textContent = 0
       timer.textContent = 0;
-    }, 3000);
+    }, 2000);
   }
 };
 
-start = () => {
-  let timerId = setInterval(() => {
-    timer.textContent++;
-  }, 1000);
-  if (point.textContent == sumCells / 2)
-  clearInterval(timerId);
-  return timerId
-}
+// start = () => {
+//   let timerId = setInterval(() => {
+//     timer.textContent++;
+//   }, 1000);
+//   if (point.textContent == sumCells / 2)
+//   clearInterval(timerId);
+//   return timerId
+// }
