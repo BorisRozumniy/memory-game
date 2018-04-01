@@ -52,19 +52,20 @@ gameField = () => {
     if (target.className != 'hidden') return;
     targets.push(target);
     let [previous , curent, ...rest] = targets;
-    target.classList.toggle('hidden');
+    target.classList.remove('hidden');
 
-    if (targets.length > 1) {
+    if (rest.length == 0 && curent) {
 
       // проверяем на совпадения
+      console.log(previous, curent)
       if (previous.src == curent.src) {
         let t1 = setTimeout(() => {
           curent.parentElement.classList.toggle('hidden');
           previous.parentElement.classList.toggle('hidden');
           console.log('==', t1);
+          targets = [];
         }, 1000)
         showPoint();
-        return;
       }
 
       // проверяем на не совпадения
@@ -76,9 +77,12 @@ gameField = () => {
           targets = [];
         }, 1000)
       }
-      rest.forEach(e => e.classList.toggle('hidden'));
+
     }
-    // console.log(rest, target.src)
+    if (rest.length > 0) {
+      console.log(rest, target.src)
+      rest.forEach(e => e.classList.add('hidden'));
+    }
   });
 };
 
