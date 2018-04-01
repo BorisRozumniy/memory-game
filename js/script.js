@@ -1,8 +1,11 @@
 let gameTable = document.querySelector('table');
 let fromExternalScript;
 let targets = [];
-let point = 0;
+let point = document.querySelector('#point');
+let timer = document.querySelector('#timer');
+let clicks = document.querySelector('#clicks');
 let sumCells;
+let timerId;
 
 const images = [
   "https://kde.link/test/0.png",
@@ -45,9 +48,17 @@ gameField = () => {
     img.src = copyImg[i];
     cells[i].appendChild(img);
   }
-  gameTable.appendChild(tBody)
+  gameTable.appendChild(tBody);
 
   tBody.addEventListener('click', event => {
+    if (clicks.textContent == '0') {
+      timerId = setInterval(() => {
+        timer.textContent++;
+      }, 1000);
+    };
+
+    clicks.textContent++;
+
     let target = event.target;
     if (target.className != 'hidden') return;
     targets.push(target);
@@ -87,19 +98,29 @@ gameField = () => {
 };
 
 showPoint = () => {
-  let pointWiev = document.querySelector('#pointWiev');
-  point++;
-  pointWiev.textContent = point;
-  if (pointWiev.textContent == sumCells / 2) {
-    alert(`You win. Result: ${targets.length}`)
-    clearField();
-    gameField();
-    point = 0;
-    targets = [];
-    pointWiev.textContent = point;
+  point.textContent++;
+  if (point.textContent == sumCells / 2) {
+    clearInterval(timerId);
+    setTimeout(() => {
+      alert(`You win. Result:
+        ${point.textContent} points
+        ${timer.textContent} seconds
+        ${clicks.textContent} clicks`
+      )
+      gameTable.children[0].remove();
+      gameField();
+      point.textContent = 0;
+      clicks.textContent = 0
+      timer.textContent = 0;
+    }, 3000);
   }
 };
 
-clearField = () => {
-  gameTable.children[0].remove()
+start = () => {
+  let timerId = setInterval(() => {
+    timer.textContent++;
+  }, 1000);
+  if (point.textContent == sumCells / 2)
+  clearInterval(timerId);
+  return timerId
 }

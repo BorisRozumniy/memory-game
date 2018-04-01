@@ -1,11 +1,35 @@
 body {
-  background: url(http://news.mit.edu/sites/mit.edu.newsoffice/files/images/2016/MIT-WorkingMemory_0.jpg) no-repeat;
+  background: url(../img/bg.jpg) no-repeat;
   background-size: cover;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
+
+.pointWrap {
+  background: aliceblue;
+	border-radius: 2px;
+	box-shadow: 0 0 5px 0 ;
+	display: flex;
+  /* justify-content: space-around; */
+  padding: 15px;
+  margin: 5px;
+}
+
+.column {
+  padding: 5px;
+  margin: 0 5px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 3px;
+  background: #b5e7e2;
+}
+
+  .column span {
+    text-align: center;
+    color: red;
+  }
 
 .gameTable {
 	background: aliceblue;
@@ -20,6 +44,10 @@ body {
   margin: 5px;
   background: #84ff8e;
   display: flex;
+}
+
+.cell:hover {
+  box-shadow: 0 0 2px;
 }
 
 .cell img {
