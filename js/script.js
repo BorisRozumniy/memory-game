@@ -27,12 +27,11 @@ gameField = () => {
 
   let copyImg = images.slice(0, sumCells / 2);
   copyImg.forEach(e => copyImg.push(e));
-  randomInteger = (min, max) => {
-    var rand = min + Math.random() * (max + 1 - min);
-    rand = Math.floor(rand);
-    return rand;
-  };
-  copyImg.sort( () => randomInteger(0, copyImg.length) );
+  var arr = [1, 2, 3, 4, 5];
+
+  compareRandom = (a, b) => Math.random() - 0.5;
+
+  copyImg.sort( compareRandom );
   let tBody = document.createElement('tbody');
   tBody.classList.add('gameTable');
   for (let i = 0; width > i; i++) {

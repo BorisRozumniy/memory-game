@@ -32,8 +32,6 @@ externalScript = () => {
     if (width.value < 0 || height.value < 0) return alert('Нужны положительные числа')
     if (width.value % 2 != 0 && height.value % 2 != 0) return alert('Нечетное количество клеток')
     fromExternalScript = JSON.stringify(obj);
-    // width.value = '';
-    // height.value = '';
 
     gameField();
     setings.classList.toggle('hidden')
