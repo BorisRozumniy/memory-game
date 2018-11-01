@@ -1,2 +1,2 @@
 # test
-Game "Find 2 identical pictures"
+Game "Find 2 identical pictures".
