@@ -9,16 +9,28 @@ let sumCells;
 let timerId;
 
 const images = [
-  "https://kde.link/test/0.png",
-  "https://kde.link/test/1.png",
-  "https://kde.link/test/2.png",
-  "https://kde.link/test/3.png",
-  "https://kde.link/test/4.png",
-  "https://kde.link/test/5.png",
-  "https://kde.link/test/6.png",
-  "https://kde.link/test/7.png",
-  "https://kde.link/test/8.png",
-  "https://kde.link/test/9.png"
+  "img/ab1.jpg",
+  "img/ab2.jpg",
+  "img/ab3.jpg",
+  "img/ab4.jpg",
+  "img/ab5.jpg",
+  "img/ab6.jpg",
+  "img/ab7.jpg",
+  "img/ab8.jpg",
+  "img/ab9.jpg",
+  "img/ab10.jpg",
+  "img/ab11.jpg",
+  "img/ab12.jpg",
+  "img/ab13.jpg",
+  "img/ab14.jpg",
+  "img/ab15.jpg",
+  "img/ab16.jpg",
+  "img/ab17.jpg",
+  "img/ab18.jpg",
+  "img/ab19.jpg",
+  "img/ab20.jpg",
+  "img/ab21.jpg",
+  
 ];
 
 gameField = () => {
@@ -27,7 +39,6 @@ gameField = () => {
 
   let copyImg = images.slice(0, sumCells / 2);
   copyImg.forEach(e => copyImg.push(e));
-  var arr = [1, 2, 3, 4, 5];
 
   compareRandom = (a, b) => Math.random() - 0.5;
 
@@ -112,11 +123,3 @@ showPoint = () => {
   }
 };
 
-// start = () => {
-//   let timerId = setInterval(() => {
-//     timer.textContent++;
-//   }, 1000);
-//   if (point.textContent == sumCells / 2)
-//   clearInterval(timerId);
-//   return timerId
-// }
